@@ -1,0 +1,68 @@
+/* CSS Standard Rules */
+
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+body {
+    font-size: 1.6rem;
+    margin: 0;
+    min-height: 100vh;
+}
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+/*
+    a:hover,
+    a:focus {
+        text-decoration: underline;
+    }
+    */
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.typographic {
+    list-style: initial;
+    padding-left: inital;
+}
+
+  /* For 'accessibility text'. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+  /* Project Specific Rules */
+
