@@ -10,6 +10,9 @@ fetch(issEndPoint)
         console.log("location", location)
         return location; 
     })
+    // the maps api is expecting this: { long: number, lat: number} the iss api is giving me this: { longitude: string, latitude: string }, the next two functions do the conversion from string to floating point numbers, create new keys with the correct names, and assign the results to the exisiting location object. 
+    // i'm doing the above as I was getting an error for maps.Marker in the initMap function as the propeties weren't numbers for the position method.
+
     .then(function convertLatToFloat(location) {
         const latNumber = parseFloat(location.latitude);
         console.log("convertLatToFloat -> latNumber", latNumber)
@@ -33,10 +36,9 @@ fetch(issEndPoint)
             position: location,
             map: map
         })
-
     })
+    .catch(function(error) {
+        console.log(error);
+});
 
-
-
-    
     
