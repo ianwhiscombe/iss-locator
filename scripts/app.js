@@ -1,19 +1,41 @@
-// get the location of ISS
-// post the coordinates to maps api
-// get the map back
+
+// * Get the location of the ISS and display on a map
 
 const issEndPoint = 'http://api.open-notify.org/iss-now.json'
 
-const issLocation = [];
-console.log("issLocation", issLocation)
-
 fetch(issEndPoint)
     .then(response => response.json())
-    .then(data => issLocation.push(data.iss_position))
-    // .then(console.log(issLocation))
-// issLocation is an array that contains one object that contains two properties, latitude and longitude with a number in string format.
-// I now need to change the name of the properties to lat and lng to match the google api requirements.
-console.log("issLatLng", issLatLng)
+    .then(function getLocationObject(data) {
+        const location = data.iss_position;
+        console.log("location", location)
+        return location; 
+    })
+    .then(function convertLatToFloat(location) {
+        const latNumber = parseFloat(location.latitude);
+        console.log("convertLatToFloat -> latNumber", latNumber)
+        location.lat = latNumber;
+        console.log("convertLatToFloat -> location", location)
+        return location; 
+    })
+    .then(function convertLngToFloat(location) {
+        const lngNumber = parseFloat(location.longitude);
+        console.log("convertLngToFloat -> lngNumber", lngNumber)
+        location.lng = lngNumber;
+        console.log("convertLngToFloat -> location", location)
+        return location;   
+    })
+    .then(function initMap(location) {
+        console.log("initMap -> location", location)
+        const map = new google.maps.Map(
+            document.querySelector('.map'), {zoom: 5, center: new google.maps.LatLng(location.latitude, location.longitude)}
+        );
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map
+        })
+
+    })
+
 
 
     
