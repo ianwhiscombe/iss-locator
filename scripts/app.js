@@ -3,6 +3,8 @@
 
 const issEndPoint = 'http://api.open-notify.org/iss-now.json'
 
+const satelliteIcon = '/assets/icons/satellites.svg'
+
 fetch(issEndPoint)
     .then(response => response.json())
     .then(function getLocationObject(data) {
@@ -30,15 +32,19 @@ fetch(issEndPoint)
     .then(function initMap(location) {
         console.log("initMap -> location", location)
         const map = new google.maps.Map(
-            document.querySelector('.map'), {zoom: 5, center: new google.maps.LatLng(location.latitude, location.longitude)}
+            document.querySelector('.map'), {zoom: 4, center: new google.maps.LatLng(location.latitude, location.longitude)}
         );
+        
         const marker = new google.maps.Marker({
             position: location,
-            map: map
+            map: map,
+            icon: satelliteIcon,
+            animation: google.maps.Animation.DROP
         })
     })
     .catch(function(error) {
         console.log(error);
 });
+
 
     
