@@ -33,10 +33,6 @@ Promise.all([
         console.log("convertLatToFloat -> arrayLocationNumberNames", arrayLocationNumberNames)
         const latNumber = parseFloat(arrayLocationNumberNames[0].latitude);
         console.log("convertLatToFloat -> latNumber", latNumber)
-        // const lat = 'lat';
-        // const issCoordinates = {[lat]: latNumber};
-        // console.log("convertLatToFloat -> issCoordinates", issCoordinates)
-        // return issCoordinates;
         arrayLocationNumberNames[0].lat = latNumber;
         console.log("convertLatToFloat -> arrayLocationNumberNames0", arrayLocationNumberNames[0])
         return arrayLocationNumberNames; 
@@ -66,26 +62,54 @@ Promise.all([
 
         return arrayLocationNumberNames;
     })
+    // .then(function renderInfo(arrayLocationNumberNames) {
+    //         console.log("renderInfo -> arrayLocationNumberNames", arrayLocationNumberNames)
+            
+    //                 arrayLocationNumberNames[2].forEach(element => {
+    //                 let astroName = element.name
+    //                 console.log("astroName", astroName)
+    //                 let craft = element.craft
+    //                 console.log("craft", craft)
+    //                 const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
+    //                 console.log("liHTML", liHTML)        
+    //         });
+    //         return liHTML;  
+    //     })
+    //     .then(function writeHTML(liHTML) {
+    //     console.log("writeHTML -> liHTML", liHTML)
+    //     console.log("writeHTML -> array", arrayLocationNumberNames)
+            
+    //     })
     .then(function renderInfo(arrayLocationNumberNames) {
         const astronautNamesAndCraft = arrayLocationNumberNames[2];
         console.log("astronautNamesAndCraft", astronautNamesAndCraft)
-        const html = astronautNamesAndCraft.forEach(element => {
+        const astronautNumber = arrayLocationNumberNames[1]
+        console.log("renderInfo -> astronautNumber", astronautNumber)
+        
+        const html = function createHTML(astronautNamesAndCraft) {
+                astronautNamesAndCraft.forEach(element => {
                 let astroName = element.name
                 console.log("astroName", astroName)
                 let craft = element.craft
                 console.log("craft", craft)
                 const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
                 console.log("liHTML", liHTML)
-                return `
+                
+                const finalHTML = `
                         <h2>Humans in Space</h2>
-                        <p>There are currently <span id="astronaut-numbers">${arrayLocationNumberNames[1]}</span> humans in space.</p>
+                        <p>There are currently <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
                         <ul class="name-list-mount">
                             ${liHTML}
                         </ul>
-                        `        
+                        `
+                console.log("createHTML -> finalHTML", finalHTML)
+                return finalHTML;        
+
         });
-        infoMount.innerHTML = html;   
-        console.log("html", html)
+        
+        }
+        infoMount.innerHTML = html(astronautNamesAndCraft);
+        console.log("renderInfo -> html", html(astronautNamesAndCraft))
     })
     .catch(function(error) {
         console.log(error);
