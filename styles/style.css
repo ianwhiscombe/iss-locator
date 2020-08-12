@@ -72,6 +72,15 @@ body {
 .map {
     height: 400px;
     width: 100%;
+    box-sizing: content-box;
+    margin-left: 0px;
+    margin-right: 0px;
 }
+
+.button-wrapper {
+    display: grid;
+    justify-content: center;
+}
+
 
 

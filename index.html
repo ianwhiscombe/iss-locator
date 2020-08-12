@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/style.css">
-    <script defer src="/scripts/app.js"></script>
-    <script defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYE-ogFZJHQ_GHOWVW842vCS-EG5C85Ug&callback=initMap">
+
+    <script src="https://kit.fontawesome.com/b49750d34d.js" crossorigin="anonymous"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYE-ogFZJHQ_GHOWVW842vCS-EG5C85Ug&callback=initMap">
 </script>
+    <script defer src="/scripts/app.js"></script>
+    
       
     <title>ISS Locator</title>
 </head>
@@ -18,12 +23,33 @@
         </div>
     </header>
     
-    <main class="container">
-        <div class="info-mount">
-            
+    <main>
+        <div>
+            <div class="map row"> 
+            </div>
 
+            <div class="button-wrapper">
+                <button class="update-button btn btn-primary btn-lg" onClick="window.location.reload();">Update Location</button>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="info-mount col"></div>
+                    <div class="fact-panel col">
+                        <h2>ISS Facts</h2>
+                        <ul>
+                            <li><i class="fas fa-satellite-dish"></i>The ISS travels at 5 miles a second, circling the planet every 90 minutes.</li>
+                            <li><i class="fas fa-satellite-dish"></i>It's the third brightest object in the sky after the moon and Venus.</li>
+                            <li><i class="fas fa-satellite-dish"></i>It cost over $120 billion to build and assemble.</li>
+                            <li><i class="fas fa-satellite-dish"></i>The pee from both the astronauts and onboard animals is captured and filtered to be re-used as drinking water.</li>
+                            <li><i class="fas fa-satellite-dish"></i>In 2014, 4 separate spacecraft docked with the station.</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
-        <div class="map"></div>
+        
     </main>
     
     <footer>

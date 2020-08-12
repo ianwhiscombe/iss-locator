@@ -80,40 +80,67 @@ Promise.all([
     //     console.log("writeHTML -> array", arrayLocationNumberNames)
             
     //     })
+    // .then(function renderInfo(arrayLocationNumberNames) {
+    //     const astronautNamesAndCraft = arrayLocationNumberNames[2];
+    //     console.log("astronautNamesAndCraft", astronautNamesAndCraft)
+    //     const astronautNumber = arrayLocationNumberNames[1]
+    //     console.log("renderInfo -> astronautNumber", astronautNumber)
+        
+    //     const html = function createHTML(astronautNamesAndCraft) {
+    //             astronautNamesAndCraft.forEach(element => {
+    //             let astroName = element.name
+    //             console.log("astroName", astroName)
+    //             let craft = element.craft
+    //             console.log("craft", craft)
+    //             const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
+    //             console.log("liHTML", liHTML)
+                
+    //             const finalHTML = `
+    //                     <h2>Humans in Space</h2>
+    //                     <p>There are currently <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
+    //                     <ul class="name-list-mount">
+    //                         ${liHTML}
+    //                     </ul>
+    //                     `
+    //             console.log("createHTML -> finalHTML", finalHTML)
+    //             return finalHTML;        
+
+    //     });
+        
+    //     }
+    //     infoMount.innerHTML = html(astronautNamesAndCraft);
+    //     console.log("renderInfo -> html", html(astronautNamesAndCraft))
+    // })
     .then(function renderInfo(arrayLocationNumberNames) {
         const astronautNamesAndCraft = arrayLocationNumberNames[2];
-        console.log("astronautNamesAndCraft", astronautNamesAndCraft)
         const astronautNumber = arrayLocationNumberNames[1]
-        console.log("renderInfo -> astronautNumber", astronautNumber)
-        
-        const html = function createHTML(astronautNamesAndCraft) {
+        const liHTML =[];
+        function createHTML(astronautNamesAndCraft) {
+            console.log("THE FUNCTION RUNS", astronautNamesAndCraft)
                 astronautNamesAndCraft.forEach(element => {
                 let astroName = element.name
-                console.log("astroName", astroName)
                 let craft = element.craft
-                console.log("craft", craft)
-                const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
-                console.log("liHTML", liHTML)
-                
-                const finalHTML = `
-                        <h2>Humans in Space</h2>
-                        <p>There are currently <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
+                liHTML.push(`<li><i class="fas fa-user-astronaut"></i>${astroName}</li>
+                <li><i class="fas fa-rocket"></i>${craft}</li>`)
+                console.log("ANNOUNCEMENT ANNOUNCEMENT", liHTML)
+                })
+            }
+
+            createHTML(astronautNamesAndCraft);
+
+            const finalHTML = `
+                        <h2>Live Astronaut Tracker</h2>
+                        <p>Right now there are <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
                         <ul class="name-list-mount">
-                            ${liHTML}
+                            ${liHTML.map(li => {
+                                return `<li>${li}</li>`
+                            }).join('')}
                         </ul>
                         `
-                console.log("createHTML -> finalHTML", finalHTML)
-                return finalHTML;        
-
-        });
-        
-        }
-        infoMount.innerHTML = html(astronautNamesAndCraft);
-        console.log("renderInfo -> html", html(astronautNamesAndCraft))
+                        console.log("renderInfo -> html", finalHTML)
+        return infoMount.innerHTML = finalHTML;
     })
     .catch(function(error) {
         console.log(error);
 });
-
-
     
