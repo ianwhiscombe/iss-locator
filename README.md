@@ -15,7 +15,7 @@
 
 ### ✨ [Demo](http://iss-locator-app.surge.sh)
 
-### Details
+## Details
 
 While building this app I've used the following languages:
 
