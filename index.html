@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles/style.css">
 
@@ -12,49 +11,50 @@
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYE-ogFZJHQ_GHOWVW842vCS-EG5C85Ug&callback=initMap">
 </script>
     <script defer src="/scripts/app.js"></script>
-    
-      
+
     <title>ISS Locator</title>
 </head>
+
 <body>
     <header>
-        <div class="container">
-            <h1>ISS Locator</h1>
+        <div class="container header-text">
+            <span>ISS Locator</span> 
         </div>
     </header>
     
     <main>
-        <div>
-            <div class="map row"> 
+        <div class="container">
+            <div class="map-wrapper card">
+                <h2 class="card-header">Current location</h2>
+                <div class="map row"> 
+                </div>
             </div>
 
             <div class="button-wrapper">
                 <button class="update-button btn btn-primary btn-lg" onClick="window.location.reload();">Update Location</button>
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="info-mount col"></div>
-                    <div class="fact-panel col">
-                        <h2>ISS Facts</h2>
-                        <ul>
-                            <li><i class="fas fa-satellite-dish"></i>The ISS travels at 5 miles a second, circling the planet every 90 minutes.</li>
-                            <li><i class="fas fa-satellite-dish"></i>It's the third brightest object in the sky after the moon and Venus.</li>
-                            <li><i class="fas fa-satellite-dish"></i>It cost over $120 billion to build and assemble.</li>
-                            <li><i class="fas fa-satellite-dish"></i>The pee from both the astronauts and onboard animals is captured and filtered to be re-used as drinking water.</li>
-                            <li><i class="fas fa-satellite-dish"></i>In 2014, 4 separate spacecraft docked with the station.</li>
+            <div>
+                <div class="row card-deck">
+                    <div class="info-mount col col-xs-1 card text-center"></div>
+                    <div class="fact-panel col-xs-1 card">
+                        <h2 class="card-header">ISS Facts</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-satellite-dish"></i>The ISS travels at 5 miles a second, circling the planet every 90 minutes.</li>
+                            <li class="list-group-item"><i class="fas fa-satellite-dish"></i>It's the third brightest object in the sky after the moon and Venus.</li>
+                            <li class="list-group-item"><i class="fas fa-satellite-dish"></i>It cost over $120 billion to build and assemble.</li>
+                            <li class="list-group-item"><i class="fas fa-satellite-dish"></i>The pee from both the astronauts and onboard animals is captured and filtered to be re-used as drinking water.</li>
+                            <li class="list-group-item"><i class="fas fa-satellite-dish"></i>In 2014, 4 separate spacecraft docked with the station.</li>
                         </ul>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-        
+        </div>    
     </main>
     
     <footer>
         <div class="container">
-            <span>Ian Whiscombe &copy;2020</span>
+            <small>Ian Whiscombe &copy;2020</small>
         </div>
     </footer>
 </body>

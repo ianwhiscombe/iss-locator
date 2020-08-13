@@ -1,4 +1,4 @@
-// * Get the location of the ISS and display on a map
+// * Get the location of the ISS, display it on a map, and fetch and display live information about astronauts in space.
 
 const issEndPoint = 'http://api.open-notify.org/iss-now.json'
 const astronautsEndPoint = 'http://api.open-notify.org/astros.json'
@@ -26,9 +26,6 @@ Promise.all([
         
         return arrayLocationNumberNames = [location, numberOfAstronauts, nameAndSpacecraft]; 
     })
-    // the maps api is expecting this: { long: number, lat: number} the iss api is giving me this: { longitude: string, latitude: string }, the next two functions do the conversion from string to floating point numbers, create new keys with the correct names, and assign the results to the exisiting location object. 
-    // i'm doing the above as I was getting an error for maps.Marker in the initMap function as the propeties weren't numbers for the position method.
-
     .then(function convertLatToFloat(arrayLocationNumberNames) {
         console.log("convertLatToFloat -> arrayLocationNumberNames", arrayLocationNumberNames)
         const latNumber = parseFloat(arrayLocationNumberNames[0].latitude);
@@ -62,55 +59,6 @@ Promise.all([
 
         return arrayLocationNumberNames;
     })
-    // .then(function renderInfo(arrayLocationNumberNames) {
-    //         console.log("renderInfo -> arrayLocationNumberNames", arrayLocationNumberNames)
-            
-    //                 arrayLocationNumberNames[2].forEach(element => {
-    //                 let astroName = element.name
-    //                 console.log("astroName", astroName)
-    //                 let craft = element.craft
-    //                 console.log("craft", craft)
-    //                 const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
-    //                 console.log("liHTML", liHTML)        
-    //         });
-    //         return liHTML;  
-    //     })
-    //     .then(function writeHTML(liHTML) {
-    //     console.log("writeHTML -> liHTML", liHTML)
-    //     console.log("writeHTML -> array", arrayLocationNumberNames)
-            
-    //     })
-    // .then(function renderInfo(arrayLocationNumberNames) {
-    //     const astronautNamesAndCraft = arrayLocationNumberNames[2];
-    //     console.log("astronautNamesAndCraft", astronautNamesAndCraft)
-    //     const astronautNumber = arrayLocationNumberNames[1]
-    //     console.log("renderInfo -> astronautNumber", astronautNumber)
-        
-    //     const html = function createHTML(astronautNamesAndCraft) {
-    //             astronautNamesAndCraft.forEach(element => {
-    //             let astroName = element.name
-    //             console.log("astroName", astroName)
-    //             let craft = element.craft
-    //             console.log("craft", craft)
-    //             const liHTML = `<li>${astroName} is currently on board the ${craft}.</li>`
-    //             console.log("liHTML", liHTML)
-                
-    //             const finalHTML = `
-    //                     <h2>Humans in Space</h2>
-    //                     <p>There are currently <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
-    //                     <ul class="name-list-mount">
-    //                         ${liHTML}
-    //                     </ul>
-    //                     `
-    //             console.log("createHTML -> finalHTML", finalHTML)
-    //             return finalHTML;        
-
-    //     });
-        
-    //     }
-    //     infoMount.innerHTML = html(astronautNamesAndCraft);
-    //     console.log("renderInfo -> html", html(astronautNamesAndCraft))
-    // })
     .then(function renderInfo(arrayLocationNumberNames) {
         const astronautNamesAndCraft = arrayLocationNumberNames[2];
         const astronautNumber = arrayLocationNumberNames[1]
@@ -120,7 +68,7 @@ Promise.all([
                 astronautNamesAndCraft.forEach(element => {
                 let astroName = element.name
                 let craft = element.craft
-                liHTML.push(`<li><i class="fas fa-user-astronaut"></i>${astroName}</li>
+                liHTML.push(`<li class=""><i class="fas fa-user-astronaut"></i>${astroName}</li>
                 <li><i class="fas fa-rocket"></i>${craft}</li>`)
                 console.log("ANNOUNCEMENT ANNOUNCEMENT", liHTML)
                 })
@@ -129,18 +77,29 @@ Promise.all([
             createHTML(astronautNamesAndCraft);
 
             const finalHTML = `
-                        <h2>Live Astronaut Tracker</h2>
-                        <p>Right now there are <span id="astronaut-numbers">${astronautNumber}</span> humans in space.</p>
+                        <h2 class="card-header">Live Astronaut Tracker</h2>
+                        <p class="card-title">Right now there are <span id="astronaut-numbers">${astronautNumber}</span> humans in space:</p>
                         <ul class="name-list-mount">
                             ${liHTML.map(li => {
                                 return `<li>${li}</li>`
                             }).join('')}
                         </ul>
+                        <div class="card-footer"><span class="time"></span></div>
                         `
                         console.log("renderInfo -> html", finalHTML)
         return infoMount.innerHTML = finalHTML;
     })
+    .then(
+        function displayClock(){
+            const liveTime = document.querySelector('.time');
+            const display = new Date().toLocaleTimeString();
+            liveTime.innerHTML = display;
+            setTimeout(displayClock, 1000); 
+        }
+    )
     .catch(function(error) {
         console.log(error);
 });
+
+
     
