@@ -17,9 +17,19 @@
 
 ### Details
 
-Deatils text
+While building this app I've used the following languages:
 
+* HTML
+* CSS
+* JavaScript
 
+Amongst others, I focused on showing an understanding of these concepts:
+
+* Using Bootstrap to style the app.
+* Handling multiple API calls.
+* Using fetch.
+* Using promises to perform asynchronous tasks. 
+* Handling the Date object to display a live clock in the final app.
 
 ## Author
 
