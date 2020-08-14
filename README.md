@@ -9,11 +9,27 @@
   </a>
 </p>
 
-> App that shows the current location of the ISS on a map. Uses the fetch api to get the station's location and the google map's api to mark it on a map. It also fetches and displays the number of humans currently in space as well as their names and the craft they are on.
+> App that shows the current location of the International Space Station on a map. Uses the fetch api to get the station's location and the google map's api to mark it on a map. It also fetches and displays the number of humans currently in space as well as their names and the craft they are on.
 
 ### 🏠 [Homepage](https://github.com/ianwhiscombe/iss-locator)
 
 ### ✨ [Demo](http://iss-locator-app.surge.sh)
+
+## Details
+
+While building this app I've used the following languages:
+
+* HTML
+* CSS
+* JavaScript
+
+Amongst others, I focused on showing an understanding of these concepts:
+
+* Using Bootstrap to style the app.
+* Handling multiple API calls.
+* Using fetch.
+* Using promises to perform asynchronous tasks. 
+* Handling the Date object to display a live clock in the final app.
 
 ## Author
 
