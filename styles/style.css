@@ -85,10 +85,13 @@ body::after{
 }
 .header-text {
     font-size: 3rem;
-    font-weight: 200;
+    font-weight: 300;
     padding-top: 3rem;
     padding-bottom: 2rem;
     color: white;
+}
+#logo-text {
+    padding-left: 1rem;
 }
 .button-wrapper {
     display: grid;
