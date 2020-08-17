@@ -29,7 +29,7 @@ Promise.all([
     })
     .then(function initMap(arrayLocationNumberNames) {
         const map = new google.maps.Map(
-            document.querySelector('.map'), {zoom: 4, center: new google.maps.LatLng(arrayLocationNumberNames[0].lat, arrayLocationNumberNames[0].lng)}
+            document.querySelector('.map'), {zoom: 3, center: new google.maps.LatLng(arrayLocationNumberNames[0].lat, arrayLocationNumberNames[0].lng)}
         );
         
         const marker = new google.maps.Marker({
