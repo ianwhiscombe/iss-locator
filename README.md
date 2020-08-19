@@ -15,6 +15,8 @@
 
 ### ✨ [Demo](http://iss-locator-app.surge.sh)
 
+![CleanShot 2020-08-19 at 14 40 44@2x](https://user-images.githubusercontent.com/40146191/90642209-05153080-e22a-11ea-8e6f-4b0e7b0e338e.png)
+
 ## Details
 
 While building this app I've used the following languages:
