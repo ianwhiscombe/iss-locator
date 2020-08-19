@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> App that shows the current location of the International Space Station on a map. Uses the fetch api to get the station's location and the google map's api to mark it on a map. It also fetches and displays the number of humans currently in space as well as their names and the craft they are on.
+> App that shows the current location of the International Space Station on a map. Uses fetch to get the station's location and the google map's api to mark it on a map. It also fetches and displays the number of humans currently in space as well as their names and the craft they are on.
 
 ### 🏠 [Homepage](https://github.com/ianwhiscombe/iss-locator)
 
